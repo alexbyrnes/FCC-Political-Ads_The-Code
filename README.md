@@ -1,4 +1,4 @@
-##Code Repository for the FCC Political Ad Archive
+## Code Repository for the FCC Political Ad Archive
  
 Code for extracting data from a large number of PDFs, particularly FCC Political Ad documents
 
@@ -24,12 +24,12 @@ Some python dependencies may be installed with Debian packages:
 * python-skimage
 
 
-#####Create database
+##### Create database
 
     createdb fcc
     psql -d fcc -f schema.sql
 
-#####Edit settings.py
+##### Edit settings.py
 ```
 
 CONNECTION = "dbname='fcc' user='<user>' host='localhost' password='<pw>'"
@@ -44,80 +44,80 @@ basepath = '/path/for/files/'
 ```
 
 
-#####Run the tests
+##### Run the tests
 
     cd fpa
     nosetests
 
-#####Download files
+##### Download files
 
     python station_dloader.py
     
 
-#####Get help for main scripts
+##### Get help for main scripts
 
     python pq.py --help
     python run_parallel.py --help
     python run_extract.py --help
     # (cropbox.py, merge_clusters.py, standardize.py, threshold.py)
 
-#####Identify text PDFs
+##### Identify text PDFs
 
     python pq.py markCommonFromLocalText
 
-#####Extract data from text PDFs
+##### Extract data from text PDFs
 
     python pq.py parseTextInvoices
     python pq.py parseTextContracts
     python pq.py parseTextOrders
 
 
-#####Get bounding boxes
+##### Get bounding boxes
 
     ./get_bboxes.sh
 
-#####Detect document types
+##### Detect document types
 
     python run_parallel.py --help
     python run_parallel.py -s=35 -r=420 --psm=3 --targetfield=doctype --outfile="doctype.tsv"
 
 
-#####Extract data from one type
+##### Extract data from one type
 
     python run_parallel.py -s=50 -r=400 --targetfield=contract --crop
 
 
-#####Extract using multiple trials and validation 
+##### Extract using multiple trials and validation 
 
     python run_extract.py --help
     python run_extract.py --targetfield=contract --crop
 
 
-####Other Useful Commands
+#### Other Useful Commands
 
-#####Print all Parallel commands  
+##### Print all Parallel commands  
 
 This can be used to run extractions on other machines, or without python dependencies.
 
     python run_parallel.py <parameters> --dryrun
 
-#####Print only initial Parallel command
+##### Print only initial Parallel command
 
     python run_parallel.py <parameters> --printcmd
 
-#####Output images from each stage of process
+##### Output images from each stage of process
 
     python run_parallel.py <parameters> --outputpng --outputcrop --outputchop
 
-#####Get the number of pages in the documents
+##### Get the number of pages in the documents
 
     ./get_pages.sh
 
 
-###Full List of Scripts and Modules
+### Full List of Scripts and Modules
 
 
-####bulkprocesses
+#### bulkprocesses
 
 ```
 CLASSES
@@ -157,7 +157,7 @@ FUNCTIONS
         Run a process on a set of files in a query.
 ```
 
-####cropbox.py  
+#### cropbox.py  
 
 ```
 DESCRIPTION
@@ -173,7 +173,7 @@ DESCRIPTION
 ```
 
 
-####merge_clusters.py
+#### merge_clusters.py
 
 
 ```
@@ -214,7 +214,7 @@ FUNCTIONS
 ```
 
 
-####osutil
+#### osutil
 
 Operating system utilities.  Running commands, printing to stderr etc.
 
@@ -231,7 +231,7 @@ FUNCTIONS
 ```
 
 
-####pq.py
+#### pq.py
 
 Command line application for running processes.
 
@@ -264,7 +264,7 @@ FUNCTIONS
         Command that runs process to print parameters needed to extract a PDF with GNU Parallel.
 ```
 
-####run_extract.py
+#### run_extract.py
 
 Runs files through a series of filters and other image processing applications.  See settings.extract_params.
 
@@ -279,7 +279,7 @@ DESCRIPTION
 ```
 
 
-####run_parallel.py
+#### run_parallel.py
 
 Run GNU Parallel on a set of files, converting, cropping, OCR etc.
 
@@ -383,7 +383,7 @@ DESCRIPTION
 
 
 
-####standardize.py
+#### standardize.py
 
 ```
 DESCRIPTION
@@ -402,7 +402,7 @@ DESCRIPTION
 
 
 
-####threshold
+#### threshold
 
 Threshold an image.
 
@@ -424,7 +424,7 @@ FUNCTIONS
 
 
 
-####util
+#### util
 
 Utilities
 
